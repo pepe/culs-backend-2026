@@ -73,15 +73,3 @@ Teaching materials for the backend summer study block.
 - [Mongoose](http://mongoosejs.com)
 - [Offline first](https://www.infoq.com/presentations/offline-first-apps/)
 
-## Project
-
-Create a basic web application with racket programming language in the group of 3 people. Result should be in the GitHub repository with the names in the README.md. 
-
-Points:
-
-- today 90
-- tomorrow 80
-- till the end of the week 70
-- till the end of the next week 60
-
-10 points for the starring of the this repository.
