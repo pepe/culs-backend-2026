@@ -9,12 +9,12 @@ title: Frameworks
 ## Frameworks
 * Python - Django
 * Java - Play
-* PHP - Symphony
+* PHP - Symfony
 * Node - Express
 ---
 ## Express.js
 * Node.js based
-* Very simple a configurable
+* Very simple and configurable
 * Used heavily
 ---
 ## Frameworks

@@ -17,14 +17,14 @@ title: Languages
 * Lua
 ---
 ## Object Oriented
-* SmallTalk
-* Java, C ++, C#, Swift
+* Smalltalk
+* Java, C++, C#, Swift
 * Ruby, Python, PHP
 * In full swing
 ---
 ## Functional
 * Lisp, Clojure, Racket
-* Haskel, OCaml, Elm
+* Haskell, OCaml, Elm
 * Elixir, Erlang
 * In full swing too
 ---

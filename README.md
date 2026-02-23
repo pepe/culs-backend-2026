@@ -1,4 +1,7 @@
 # No Future Backend 2026
+
+Monday attendence is done by starring this repository.
+
 Teaching materials for the backend summer study block.
 
 - [Janet](https://janet-lang.org/)
