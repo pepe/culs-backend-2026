@@ -1,5 +1,8 @@
 # History of Backend 2026
 
+- [Janet release download](https://github.com/janet-lang/janet/releases/tag/v1.40.1)
+- [Interstudy project development branch](https://github.com/pepe/interstudy/tree/culs-backend)
+
 Monday attendence is done by starring this repository.
 
 Teaching materials for the backend summer study block.
