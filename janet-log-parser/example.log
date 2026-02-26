@@ -1,0 +1,15 @@
+2026-02-26 09:00:01 INFO web Starting HTTP server on port 8080
+2026-02-26 09:00:02 INFO db Connected to database postgres://localhost/app
+2026-02-26 09:01:10 DEBUG auth Looking up user Pepe
+2026-02-26 09:01:11 INFO auth User Pepe logged in from 192.168.0.10
+2026-02-26 09:02:00 WARN cache Cache miss for key homepage
+2026-02-26 09:03:15 INFO auth User Luschen requested password reset
+2026-02-26 09:04:02 INFO auth User Tamo enrolled in course BACKEND-2026
+2026-02-26 09:05:00 INFO auth User Arto marked attendance for Monday
+2026-02-26 09:05:42 ERROR db Failed to execute query SELECT * FROM users WHERE active = true
+2026-02-26 09:05:43 INFO web Returning 500 error page for user Arto
+2026-02-26 09:06:00 DEBUG worker Retrying failed job 123 for user Meryem
+2026-02-26 09:06:45 INFO worker Job 123 assigned to helper Doga
+2026-02-26 09:07:10 INFO worker Job 123 finished successfully for user Meryem
+2026-02-26 09:08:30 WARN web Slow response for user Safiya (950 ms)
+2026-02-26 09:10:00 INFO web Shutting down HTTP server
