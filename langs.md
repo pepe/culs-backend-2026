@@ -26,6 +26,7 @@ title: Languages
 * Lisp, Clojure, Racket
 * Haskell, OCaml, Elm
 * Elixir, Erlang
+* Rust is the best
 * In full swing too
 ---
 ## One I forgot to mention
