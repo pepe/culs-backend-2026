@@ -38,25 +38,25 @@
     :correct 2
     :difficulty :medium}
 
-   {:question "Which planet is closest to the Sun?"
+    {:question "Which planet is closest to the Sun?"
     :options ["Venus" "Mercury" "Earth" "Mars"]
     :correct 1
-    :difficulty :medium}])
+    :difficulty :medium}
 
     {:question "Pepe is Gen __?"
     :options ["X" "Y" "Z" "Alpha"]
     :correct 1
-    :difficulty :hard}])
+    :difficulty :hard}
 
     {:question "Which language did Pepe refer to as 'Cancer'?"
     :options ["Janet" "Lua" "JavaScript" "Clojure"]
     :correct 3
-    :difficulty :medium}])
+    :difficulty :medium}
 
     {:question "One of Pepe's favorite quotes if from who?"
     :options ["Socrates" "Bob Marley" "Mohammed Ali" "Elon Musk"]
     :correct 3
-    :difficulty :hard}])
+    :difficulty :hard}
 
     {:question "Who is 'Donny' in the live hacking Pepe demoed?"
     :options ["one of his friends" "his Nephew" "Trump" "his dog"]
