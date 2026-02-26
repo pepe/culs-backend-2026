@@ -63,13 +63,18 @@
     :correct 3
     :difficulty :medium}])
 
-# --- Fisher-Yates Shuffle ---
-# Randomly shuffles an array so questions appear in a different order each time.
+# --- Seeded RNG ---
+# math/random always produces the same sequence unless we seed it with the
+# current time. We create one global RNG object seeded from os/time.
+(def rng (math/rng (os/time)))
+
+# --- Fisher-Yates Shuffle (using seeded RNG) ---
 (defn shuffle [arr]
   (let [result (array ;arr)]
     (var i (- (length result) 1))
     (while (>= i 1)
-      (let [j (math/floor (* (math/random) (+ i 1)))
+      # math/rng-int gives a random integer in [0, n)
+      (let [j (math/rng-int rng (+ i 1))
             tmp (get result i)]
         (put result i (get result j))
         (put result j tmp))
@@ -114,19 +119,32 @@
       (>= pct 40)  "Keep studying, you'll get there!"
       "Better luck next time!")))
 
-# --- Main Game Loop ---
-(defn run-quiz []
+# --- Ask Play Again ---
+(defn ask-play-again []
   (print "")
-  (print "╔════════════════════════════════════════════════╗")
-  (print "║         Welcome to the Quiz Game!              ║")
-  (print "╚════════════════════════════════════════════════╝")
+  (print "----------------------------------------")
+  (prin "Play again? (y/n): ")
+  (flush)
+  (def line (getline))
+  (if (nil? line)
+    false
+    (let [answer (string/trim (string/ascii-lower line))]
+      (cond
+        (= answer "y") true
+        (= answer "n") false
+        (do
+          (print "  Please enter y or n.")
+          (ask-play-again))))))
 
+# --- One Round of the Quiz ---
+(defn play-round []
   (def questions (shuffle quiz-questions))
   (def total (length questions))
   (printf "\nTotal Questions: %d\n" total)
 
   (var score 0)
   (var i 0)
+  (var aborted false)
 
   (while (< i total)
     (def q (get questions i))
@@ -134,7 +152,7 @@
     (def answer (get-answer))
 
     (if (nil? answer)
-      (break))  # exit gracefully on EOF (Ctrl+D)
+      (do (set aborted true) (break)))
 
     (if (= answer (q :correct))
       (do
@@ -145,14 +163,33 @@
 
     (++ i))
 
+  (when (not aborted)
+    (print "")
+    (print "╔════════════════════════════════════════════════╗")
+    (print "║                 Quiz Complete!                 ║")
+    (print "╚════════════════════════════════════════════════╝")
+    (printf "\nFinal Score: %d/%d (%.1f%%)" score total (* 100 (/ score total)))
+    (print "")
+    (print (score-message score total)))
+
+  (not aborted))
+
+# --- Main Loop (supports play-again) ---
+(defn run-game []
   (print "")
   (print "╔════════════════════════════════════════════════╗")
-  (print "║                 Quiz Complete!                 ║")
+  (print "║         Welcome to the Quiz Game!              ║")
   (print "╚════════════════════════════════════════════════╝")
-  (printf "\nFinal Score: %d/%d (%.1f%%)" score total (* 100 (/ score total)))
-  (print "")
-  (print (score-message score total))
-  (print ""))
 
-# --- Start the game ---
-(run-quiz)
+  (var keep-playing true)
+  (while keep-playing
+    (def completed (play-round))
+    (if completed
+      (set keep-playing (ask-play-again))
+      (set keep-playing false)))
+
+  (print "")
+  (print "Thanks for playing! Goodbye!"))
+
+# --- Start ---
+(run-game)
