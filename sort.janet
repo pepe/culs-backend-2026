@@ -2,28 +2,28 @@
 # ARRAY SORTING PROGRAM IN JANET
 # -------------------------------
 
-# Create an array
 (def numbers @[5 2 9 1 7 3 8 4])
 
 (print "Original Array:")
 (print numbers)
 
-# -------------------------------
-# Ascending Order
-# -------------------------------
+# Create copies
+(def asc (array))
+(each n numbers (array/push asc n))
+
+(def desc (array))
+(each n numbers (array/push desc n))
+
+# Ascending
 (print "\nAscending Order:")
+(sort asc)
 
-(sort numbers)
+(each n asc
+  (print n))
 
-(for i 0 (- (length numbers) 1)
-  (print (get numbers i)))
-
-# -------------------------------
-# Descending Order
-# -------------------------------
+# Descending
 (print "\nDescending Order:")
+(sort desc (fn [a b] (> a b)))
 
-(sort numbers (fn [a b] (> a b)))
-
-(for i 0 (- (length numbers) 1)
-  (print (get numbers i)))
+(each n desc
+  (print n))
