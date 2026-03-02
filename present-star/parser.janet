@@ -41,3 +41,26 @@
       :main (* :frontmatter :div :eol :slides)})
   (def [f & s] (peg/match grammar str))
   [:main ;s f])
+
+
+# --- Demo: Multi-criteria log query (no runtime required) ---
+
+(def demo-logs
+  [
+    {:date "2026-01-01" :time "10:00:00" :level "INFO"  :component "web" :message "Server started"}
+    {:date "2026-01-01" :time "10:05:00" :level "ERROR" :component "db"  :message "Connection failed"}
+    {:date "2026-01-01" :time "10:10:00" :level "DEBUG" :component "web" :message "User login attempt"}
+    {:date "2026-01-01" :time "10:15:00" :level "ERROR" :component "web" :message "Timeout error"}
+  ])
+
+(defn query-logs [level component]
+  (filter
+    (fn [log]
+      (and
+        (or (nil? level) (= (get log :level) level))
+        (or (nil? component) (= (get log :component) component))))
+    demo-logs))
+
+# Example usage (optional - can stay, doesn't need to be run)
+# (print (query-logs "ERROR" nil))
+# (print (query-logs "ERROR" "web"))
